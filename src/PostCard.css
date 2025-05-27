@@ -1,0 +1,48 @@
+.post-card {
+  border-top: 1px solid #1b1d1f;
+  border-bottom: 1px solid #1b1d1f;
+  border-left: none;
+  border-right: none;
+  padding: 9px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  color: #d1d1d1;
+  width: 70vw;
+  min-width: 320px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.post-card h3 {
+  font-size: 1rem;
+  text-align: left;
+  margin: 0 0 3px 0;
+
+}
+
+.update-date {
+  color: #888;
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.tags {
+  margin-top: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background: #12181f;
+  color: #5e5e5e;
+  border-radius: 12px;
+  padding: 1px 10px;
+  margin-right: 8px;
+  font-size: 0.85rem;
+}
+
+.tag:hover {
+  background: #1b1d1f;
+  color: #ffffff;
+  cursor: pointer;
+}
