@@ -1,45 +1,37 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import Article from "./Article";
+import MainPage from "./MainPage";
 
-const markdown = `Here is some JavaScript code:
+// Example post data (replace with your real data or API)
+const posts = {
+  1: {
+    title: "First Post",
+    content: "This is the content of the first post.",
+    date: "2025-05-28",
+  },
+  2: {
+    title: "Second Post",
+    content: "This is the content of the second post.",
+    date: "2025-06-01",
+  },
+};
 
-[Jump to Text](#text)
-
-<div id="text"></div>
-
-This is the text section.
-
-~~~js
-function greet(name) {
-  console.log("Hello, " + name + "!");
-  return "Greeting sent.";
+function Post() {
+  const { id } = useParams<{ id: string }>();
+  const post = id && posts.hasOwnProperty(id) ? posts[id as unknown as keyof typeof posts] : undefined;
+  if (!post) return <div>404 Post not found</div>;
+  return <Article title={post.title} content={post.content} date={post.date} />;
 }
-greet("World");
-~~~
-
-<hr />
-
-<!-- HTML example -->
-<div class="custom-box">
-  <strong>This is a custom HTML box!</strong>
-  <p>It should be styled by the CSS below.</p>
-</div>
-
-<!-- CSS example -->
-<style>
-.custom-box {
-  background: #e0f7fa;
-  border: 2px solid #00838f;
-  border-radius: 8px;
-  padding: 1em;
-  margin: 1em 0;
-  color: #006064;
-}
-</style>
-`
 
 const App: React.FC = () => (
-  <Article title="Some extremly long title and why is copilot not generating title for me" date="28.05.2025" content={markdown} />
+  <Router>
+    <Routes>
+      <Route path="/"  element={<MainPage imageSrc="profilePicture.png" altText="profilePicture" />} />
+      <Route path="/post/:id" element={<Post />} />
+      <Route path="*" element={<div>404 Not Found</div>} />
+    </Routes>
+  </Router>
 );
 
 export default App;
